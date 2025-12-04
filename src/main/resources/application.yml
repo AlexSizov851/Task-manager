@@ -1,0 +1,39 @@
+spring:
+  # Настройки базы данных
+  datasource:
+    url: jdbc:postgresql://localhost:5432/taskdb
+    username: postgres
+    password: postgres123
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+      show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        open-in-view: false
+
+server:
+  port: 8081 # Порт, на котором запускается приложение
+
+# Настройки логирования
+logging:
+  level:
+    org.springframework: INFO
+    org.hibernate: INFO
+    org.hibernate.SQL: DEBUG
+    com.example.taskmanager: DEBUG
+
+springdoc:
+  api-docs:
+    swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+    operations-sorter: method
+    tags-sorter: alpha
+    display-request-duration: true
+    try-it-out-enabled: true
+    filter: true
+
