@@ -15,14 +15,14 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/task-groups")
 @RequiredArgsConstructor
-@Tag(name = "Task Group Controller", description = "Управление группами задач")
+@Tag(name = "ГРУППЫ ЗАДАЧ", description = "Task Group Controller")
 public class TaskGroupController {
 
     private final TaskGroupService taskGroupService;
 
     // Создание новой группы задач
     @PostMapping
-    @Operation(summary = "Создать новую группу задач")
+    @Operation(summary = "Создать группу задач")
     public ResponseEntity<TaskGroup> createTaskGroup(@RequestBody TaskGroup taskGroup) {
         TaskGroup createdGroup = taskGroupService.createTaskGroup(taskGroup);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdGroup);
@@ -30,7 +30,7 @@ public class TaskGroupController {
 
     // Получение группы задач по ID
     @GetMapping("/{id}")
-    @Operation(summary = "Получить группу задач по ID")
+    @Operation(summary = "Найти группу задач по ID")
     public ResponseEntity<TaskGroup> getTaskGroup(@PathVariable Long id) {
         TaskGroup taskGroup = taskGroupService.getTaskGroupById(id);
         return ResponseEntity.ok(taskGroup);
@@ -38,7 +38,7 @@ public class TaskGroupController {
 
     // Получение всех групп задач пользователя
     @GetMapping("/user/{userId}")
-    @Operation(summary = "Получить все группы задач пользователя")
+    @Operation(summary = "Найти все группы задач пользователя")
     public ResponseEntity<List<TaskGroup>> getUserTaskGroups(@PathVariable Long userId) {
         List<TaskGroup> taskGroups = taskGroupService.getUserTaskGroups(userId);
         return ResponseEntity.ok(taskGroups);
@@ -63,15 +63,15 @@ public class TaskGroupController {
 
     // Cтатистика по группам задач пользователя
     @GetMapping("/user/{userId}/statistics")
-    @Operation(summary = "Получить статистику по группам задач пользователя")
+    @Operation(summary = "Получить отчет по группам задач пользователя")
     public ResponseEntity<Map<String, Long>> getGroupStatistics(@PathVariable Long userId) {
         Map<String, Long> statistics = taskGroupService.getGroupStatistics(userId);
         return ResponseEntity.ok(statistics);
     }
 
-    // Все группы задач в системе
+    // Все группы задач
     @GetMapping("/all")
-    @Operation(summary = "Получить все группы задач в системе")
+    @Operation(summary = "Найти все группы задач")
     public ResponseEntity<List<TaskGroup>> getAllTaskGroups() {
         List<TaskGroup> taskGroups = taskGroupService.getAllTaskGroups();
         return ResponseEntity.ok(taskGroups);

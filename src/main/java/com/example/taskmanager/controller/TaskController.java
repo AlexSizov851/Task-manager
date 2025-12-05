@@ -16,14 +16,14 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/tasks")
 @RequiredArgsConstructor
-@Tag(name = "Task Controller", description = "Управление задачами")
+@Tag(name = "ЗАДАЧИ", description = "Task Controller")
 public class TaskController {
 
     private final TaskService taskService;
 
     // Создание новой задачи
     @PostMapping
-    @Operation(summary = "Создать новую задачу")
+    @Operation(summary = "Создать задачу")
     public ResponseEntity<Task> createTask(@RequestBody Task task) {
         Task createdTask = taskService.createTask(task);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdTask);
@@ -31,7 +31,7 @@ public class TaskController {
 
     // Получение задачи по ID
     @GetMapping("/{id}")
-    @Operation(summary = "Получить задачу по ID")
+    @Operation(summary = "Найти задачу по ID")
     public ResponseEntity<Task> getTask(@PathVariable Long id) {
         Task task = taskService.getTaskById(id);
         return ResponseEntity.ok(task);
@@ -39,7 +39,7 @@ public class TaskController {
 
     // Получение всех задач пользователя
     @GetMapping("/user/{userId}")
-    @Operation(summary = "Получить все задачи пользователя")
+    @Operation(summary = "Найти все задачи пользователя")
     public ResponseEntity<List<Task>> getUserTasks(@PathVariable Long userId) {
         List<Task> tasks = taskService.getUserTasks(userId);
         return ResponseEntity.ok(tasks);
@@ -64,7 +64,7 @@ public class TaskController {
 
     // Изменить группу задач
     @PatchMapping("/{id}/group")
-    @Operation(summary = "Изменить группу задачи")
+    @Operation(summary = "Изменить группу у задачи")
     public ResponseEntity<Task> changeTaskGroup(
             @PathVariable Long id,
             @RequestParam(required = false) Long groupId) {
@@ -82,24 +82,24 @@ public class TaskController {
 
     // Получение всех задач пользователя
     @GetMapping("/user/{userId}/statistics")
-    @Operation(summary = "Получить статистику по задачам пользователя")
+    @Operation(summary = "Получить отчет по задачам пользователя")
     public ResponseEntity<Map<String, Long>> getUserTaskStatistics(@PathVariable Long userId) {
         Map<String, Long> statistics = taskService.getUserTaskStatistics(userId);
         return ResponseEntity.ok(statistics);
     }
 
-    // Получение статистики по всем задачам в системе
+    // Получение статистики по всем задачам
     @GetMapping("/system/statistics")
-    @Operation(summary = "Получить статистику по задачам в системе")
+    @Operation(summary = "Получить отчет по всем задачам")
     public ResponseEntity<Map<String, Long>> getSystemTaskStatistics() {
         Map<String, Long> statistics = taskService.getSystemTaskStatistics();
         return ResponseEntity.ok(statistics);
     }
 
 
-    // Получение всех задач в системе
+    // Получение всех задач
     @GetMapping("/all")
-    @Operation(summary = "Получить все задачи в системе")
+    @Operation(summary = "Найти все задачи")
     public ResponseEntity<List<Task>> getAllTasks() {
         List<Task> tasks = taskService.getAllTasks();
         return ResponseEntity.ok(tasks);

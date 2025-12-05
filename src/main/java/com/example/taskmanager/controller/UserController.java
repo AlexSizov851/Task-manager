@@ -14,14 +14,14 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/users") // Базовый путь для всех методов
 @RequiredArgsConstructor
-@Tag(name = "User Controller", description = "Управление пользователями")
+@Tag(name = "ПОЛЬЗОВАТЕЛИ", description = "User Controller")
 public class UserController {
 
     private final UserService userService; // Внедрение зависимости
 
     // Создание нового пользователя
     @PostMapping
-    @Operation(summary = "Создать нового пользователя")
+    @Operation(summary = "Создать пользователя")
     public ResponseEntity<User> createUser(@RequestBody User user) {
         User createdUser = userService.createUser(user);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
@@ -29,7 +29,7 @@ public class UserController {
 
     // Получение пользователя по ID
     @GetMapping("/{id}")
-    @Operation(summary = "Получить пользователя по ID")
+    @Operation(summary = "Найти пользователя по ID")
     public ResponseEntity<User> getUser(@PathVariable Long id) {
         User user = userService.getUserById(id);
         return ResponseEntity.ok(user);
@@ -37,7 +37,7 @@ public class UserController {
 
     // Получение всех пользователей
     @GetMapping
-    @Operation(summary = "Получить всех пользователей")
+    @Operation(summary = "Найти всех пользователей")
     public ResponseEntity<List<User>> getAllUsers() {
         List<User> users = userService.getAllUsers();
         return ResponseEntity.ok(users);
