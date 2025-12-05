@@ -1,7 +1,7 @@
 # Проект Task Manager
 
 ## Описание проекта
-Backend-сервис для управления задачами с использованием Spring Boot и PostgreSQL.
+Backend-сервис для управления задачами.
 
 ## Запуск проекта
 
@@ -24,32 +24,31 @@ Swagger: http://localhost:8081/swagger-ui.html
 Основные эндпоинты API:
 # Управление пользователями
 POST   /api/users          - Создать пользователя
-GET    /api/users/{id}     - Получить пользователя по ID
-GET    /api/users          - Получить всех пользователей
+GET    /api/users/{id}     - Поиск пользователя по ID
+GET    /api/users          - Поиск всех пользователей
 PUT    /api/users/{id}     - Обновить пользователя
 DELETE /api/users/{id}     - Удалить пользователя
 
 # Управление задачами
-POST   /api/tasks                     - Создать новую задачу
-GET    /api/tasks/{}                  - Получить задачу по ID
+POST   /api/tasks                     - Создать задачу
+GET    /api/tasks/{}                  - Поиск задачи по ID
 PUT    /api/tasks/{id}                - Обновить задачу
 PATCH  /api/tasks/{id}/status         - Обновить статус задачи
 PATCH  /api/tasks/{id}/group          - Изменить группу задачи 
 DELETE /api/tasks/{id}                - Удалить задачу
-GET    /api/tasks/user/{userId}       - Получить все задачи пользователя
+GET    /api/tasks/user/{userId}       - Поиск всех задач пользователя
 GET    /api/tasks/user/{userId}/statistics         - Получить статистику по задачам пользователя
 GET    /api/tasks/system/statistics                - Получить статистику по задачам в системе
-GET    /api/tasks/all                  - Получить все задачи
+GET    /api/tasks/all                  - Поиск всех задач
 
 # Управление группами задач
-POST   /api/task-groups               - Создать новую группу задач 
-GET    /api/task-groups/{id}          - Получить группу по ID
-GET    /api/task-groups/user/{userId} - Получить все группы задач пользователя
+POST   /api/task-groups               - Создать группу задач 
+GET    /api/task-groups/{id}          - Поиск группы задач по ID
+GET    /api/task-groups/user/{userId} - Поиск всех групп задач пользователя
 PUT    /api/task-groups/{id}          - Обновить группу задач
 DELETE /api/task-groups/{id}          - Удалить группу задач
-GET    /api/task-groups/all           - Получить все группы задач в системе
+GET    /api/task-groups/all           - Поиск всех групп задач в системе
 GET    /api/task-groups/user/{userId}/statistics    - Получить статистику по группам задач пользователя
-
 
 ---
 # Таблицы:
