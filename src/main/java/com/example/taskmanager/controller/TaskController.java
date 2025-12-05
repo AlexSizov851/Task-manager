@@ -44,17 +44,7 @@ public class TaskController {
         List<Task> tasks = taskService.getUserTasks(userId);
         return ResponseEntity.ok(tasks);
     }
-
-    // Получение задач пользователя по статусу
-    @GetMapping("/user/{userId}/status/{status}")
-    @Operation(summary = "Получить задачи пользователя по статусу")
-    public ResponseEntity<List<Task>> getUserTasksByStatus(
-            @PathVariable Long userId,
-            @PathVariable TaskStatus status) {
-        List<Task> tasks = taskService.getUserTasksByStatus(userId, status);
-        return ResponseEntity.ok(tasks);
-    }
-
+    // Обновление  задачи
     @PutMapping("/{id}")
     @Operation(summary = "Обновить задачу")
     public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestBody Task taskDetails) {
@@ -72,7 +62,7 @@ public class TaskController {
         return ResponseEntity.ok(updatedTask);
     }
 
-    // Изменить группу задачи
+    // Изменить группу задач
     @PatchMapping("/{id}/group")
     @Operation(summary = "Изменить группу задачи")
     public ResponseEntity<Task> changeTaskGroup(
@@ -106,13 +96,6 @@ public class TaskController {
         return ResponseEntity.ok(statistics);
     }
 
-    // Получение просроченных задач пользователя
-    @GetMapping("/user/{userId}/overdue")
-    @Operation(summary = "Получить просроченные задачи пользователя")
-    public ResponseEntity<List<Task>> getOverdueTasks(@PathVariable Long userId) {
-        List<Task> tasks = taskService.getOverdueTasks(userId);
-        return ResponseEntity.ok(tasks);
-    }
 
     // Получение всех задач в системе
     @GetMapping("/all")

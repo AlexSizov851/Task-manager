@@ -16,16 +16,8 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     // Найти все задачи пользователя
        List<Task> findByUser_Id(Long userId);
 
-    // Найти задачи пользователя по статусу
-       List<Task> findByUser_IdAndStatus(Long userId, TaskStatus status);
-
     // Найти задачи в группе
        List<Task> findByTaskGroup_Id(Long groupId);
-
-    // Запрос выводить задачи по пользователю, где дата выполнения раньше указанной и статус не "выполнена"
-      @Query("SELECT t FROM Task t WHERE t.user.id = :userId AND t.dueDate < :currentDate AND t.status != 'COMPLETED'")
-      List<Task> findOverdueTasks(@Param("userId") Long userId,
-                                  @Param("currentDate") LocalDateTime currentDate);
 
     // Запрос выводит количество задач пользователя по каждому статусу (группировка по статусу)
       @Query("SELECT t.status, COUNT(t) FROM Task t WHERE t.user.id = :userId GROUP BY t.status")

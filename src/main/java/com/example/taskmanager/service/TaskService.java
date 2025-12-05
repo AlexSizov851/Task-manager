@@ -9,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
@@ -62,11 +61,7 @@ public class TaskService {
         return taskRepository.findByUser_Id(userId);
     }
 
-    // Получить задачи пользователя по статусу
-    public List<Task> getUserTasksByStatus(Long userId, TaskStatus status) {
-        return taskRepository.findByUser_IdAndStatus(userId, status);
-    }
-
+    // Обновить изменить группу задачи
     @Transactional
     public Task changeTaskGroup(Long taskId, Long groupId) {
         Task task = getTaskById(taskId);
@@ -154,11 +149,6 @@ public class TaskService {
                 .collect(java.util.stream.Collectors.toMap(
                         arr -> arr[0].toString(),
                         arr -> (Long) arr[1]));
-    }
-
-    // Поиск всех просроченных задач пользователя
-    public List<Task> getOverdueTasks(Long userId) {
-        return taskRepository.findOverdueTasks(userId, LocalDateTime.now());
     }
 
     // Поиск всех задач в системе

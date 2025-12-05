@@ -15,10 +15,9 @@ import java.util.List;
 // Аннотация для таблицы в БД
 @Table(name = "users")
 
-// Аннотация Lombok:
-@Data // геттеры, сеттеры
-@NoArgsConstructor // конструктор без параметров
-@AllArgsConstructor // конструктор со всеми параметрами
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder // паттерн Builder
 
 public class User {

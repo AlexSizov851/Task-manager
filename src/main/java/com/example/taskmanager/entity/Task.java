@@ -48,7 +48,7 @@ public class Task {
     @JoinColumn(name = "user_id", nullable = false)
     @ToString.Exclude
     @JsonIgnore
-    private User user; //Поле user_id
+    private User user; //Поле user
 
     // Связь "многие к одному" с TaskGroup
     @ManyToOne(fetch = FetchType.LAZY)

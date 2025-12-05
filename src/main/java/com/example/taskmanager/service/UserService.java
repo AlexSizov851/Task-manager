@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor // Lombok: генерирует конструктор с final полями
+@RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class UserService {
 
@@ -25,19 +25,13 @@ public class UserService {
         return userRepository.save(user);
     }
 
-       // ПОиск пользователя по ID
+    // ПОиск пользователя по ID
         public User getUserById(Long id) {
             return userRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Пользователь не найден по ID: " + id));
         }
 
-       // Поиск пользователя по имени
-        public User getUserByUsername(String username) {
-            return userRepository.findByUsername(username)
-                    .orElseThrow(() -> new IllegalArgumentException("Пользователь не найден по имени: " + username));
-        }
-
-       // Поиск всех пользователей
+    // Поиск всех пользователей
          public List<User> getAllUsers() {
             return userRepository.findAll();
          }

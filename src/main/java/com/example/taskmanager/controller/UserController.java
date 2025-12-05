@@ -35,14 +35,6 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
-    // Получение пользователя по имени
-    @GetMapping("/username/{username}")
-    @Operation(summary = "Получить пользователя по имени")
-    public ResponseEntity<User> getUserByUsername(@PathVariable String username) {
-        User user = userService.getUserByUsername(username);
-        return ResponseEntity.ok(user);
-    }
-
     // Получение всех пользователей
     @GetMapping
     @Operation(summary = "Получить всех пользователей")
