@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/users") // Базовый путь для всех методов
+@RequestMapping("/api/users") 
 @RequiredArgsConstructor
 @Tag(name = "ПОЛЬЗОВАТЕЛИ", description = "User Controller")
 public class UserController {
 
-    private final UserService userService; // Внедрение зависимости
+    private final UserService userService; 
 
     // Создание нового пользователя
     @PostMapping
