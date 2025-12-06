@@ -18,7 +18,6 @@ docker-compose up -d
 Порт: 8081
 Swagger: http://localhost:8081/swagger-ui.html
 
-Основные эндпоинты API:
 # Управление пользователями
 POST   /api/users          - Создать пользователя
 GET    /api/users/{id}     - Поиск пользователя по ID
