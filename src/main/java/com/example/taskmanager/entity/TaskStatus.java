@@ -1,6 +1,6 @@
 package com.example.taskmanager.entity;
 
-// Перечисления для статуса и приоритета
+// Перечисления для статуса 
 public enum TaskStatus {
     PLANNED,       // Запланирована
     IN_PROGRESS,   // В работе
