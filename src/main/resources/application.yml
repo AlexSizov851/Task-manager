@@ -1,5 +1,4 @@
 spring:
-  # Настройки базы данных
   datasource:
     url: jdbc:postgresql://localhost:5432/taskdb
     username: postgres
@@ -16,9 +15,9 @@ spring:
         open-in-view: false
 
 server:
-  port: 8081 # Порт, на котором запускается приложение
+  port: 8081
 
-# Настройки логирования
+
 logging:
   level:
     org.springframework: INFO
